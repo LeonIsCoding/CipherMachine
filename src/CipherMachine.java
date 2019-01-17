@@ -141,11 +141,10 @@ public class CipherMachine {
     	final int whitespace = 32;
     	
     	while (InputList.size() != 0) {
-    		
     		char character = InputList.get(0);
     		int value = (int) character;
     		/*
-			* This checks the value of the ASCII value, 
+			* This checks the value of the ASCII value
     		* it first checks to see if the value matches a capital letter value
 			*/
     		if (value >= A && value <= Z) {
@@ -276,7 +275,6 @@ public class CipherMachine {
     	final int asterisk = 42;
     	
     	while (InputList.size() != 0) {
-    		
     		char character = InputList.get(0);
     		int value = (int) character;
     		
@@ -303,7 +301,6 @@ public class CipherMachine {
             		y++;
     		} else {
     			switch (value) {
-
         		case exclamationmark: {
         			int ascii = colon;
         			char output = (char) ascii;
@@ -367,7 +364,7 @@ public class CipherMachine {
                 		y++;
             			break;
         			}
-    		}
+    			}
     	}
    	}
    }
