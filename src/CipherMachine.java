@@ -1,11 +1,13 @@
 import java.util.ArrayList;
-// This public class holds all related CipherMachine encoding and decoding properties and methods.
+/* This public class holds all related CipherMachine encoding and decoding properties and methods. */
 public class CipherMachine {
 		
-	// Methods
+	/* Methods */
 	
-	// This method encodes symbols as well as letters by checking their ASCII value
-	// returns String of encoded message.
+	/**
+	* This method encodes symbols as well as letters by checking their ASCII value
+	* returns String of encoded message.
+	*/
     public String Part2TestEncoder(String input, int shift) {
     	ArrayList<Character>OutputList = new ArrayList<>();
     	char[] charArray = input.toCharArray();
@@ -15,7 +17,7 @@ public class CipherMachine {
     		InputList.add(c);
     	}
     	
-    	/// ASCII Values ///
+    	/* ASCII Values */
     	final int A = 65;
     	final int Z = 90;
     	final int a = 97;
@@ -104,8 +106,10 @@ public class CipherMachine {
     }
     	return OutputList.toString();
    }
-    // This method takes an incoming string and integer and shift the letters according to the shift value.
-    // Returns an encoded string.
+   /**
+    * This method takes an incoming string and integer and shift the letters according to the shift value.
+    * Returns an encoded string.
+	*/
     public String ElonEncoder(String input, int shift) {
     	ArrayList<Character>OutputList = new ArrayList<>();
     	char[] charArray = input.toCharArray();
@@ -118,7 +122,7 @@ public class CipherMachine {
     	int ascii = 0;
     	char output;
     	
-    	/// ASCII Values ///
+    	/* ASCII Values */
     	final int A = 65;
     	final int Z = 90;
     	final int a = 97;
@@ -140,36 +144,40 @@ public class CipherMachine {
     		
     		char character = InputList.get(0);
     		int value = (int) character;
-    		// This checks the value of the ASCII value, 
-    		// it first checks to see if the value matches a capital letter value
+    		/*
+			* This checks the value of the ASCII value, 
+    		* it first checks to see if the value matches a capital letter value
+			*/
     		if (value >= A && value <= Z) {
     	            char c = (char)(input.charAt(x) + shift);
-    	            // Checks the char 'c' to see if the new value exceeds the ASCII value of capital Z (90)
+    	            /* Checks the char 'c' to see if the new value exceeds the ASCII value of capital Z (90) */
     	            if (c > 'Z')
-    	            	// If true then subtract the value by 26 and the shift value
+    	            	/* If true then subtract the value by 26 and the shift value */
     	            	letter += (char)(input.charAt(x) - (26-shift));
     	            else
-    	            	// Else adds the shift value to the ASCII value
+    	            	/* Else adds the shift value to the ASCII value */
     	            	letter += (char)(input.charAt(x) + shift);
-    	            // The new letter is then added to the OutputList
+    	            /* The new letter is then added to the OutputList */
     	            OutputList.add(letter.charAt(x));
-    	            // and the old letter is removed from the InputList
+    	            /* and the old letter is removed from the InputList */
             		InputList.remove(0);
             		x++;
-            // This checks to see if the value matches a standard letter value
+            /* This checks to see if the value matches a standard letter value */
     		} else if (value >= a && value <= z) {
     	            char c = (char)(input.charAt(x) + shift);
-    	            // Checks the char 'c' to see if the new value exceeds the ASCII value of standard z (122)
+    	            /* Checks the char 'c' to see if the new value exceeds the ASCII value of standard z (122) */
     	            if (c > 'z')
-    	            	// If true then subtract the value by 26 and the shift value
+    	            	/* If true then subtract the value by 26 and the shift value */
     	            	letter += (char)(input.charAt(x) - (26-shift));
     	            else
     	            	letter += (char)(input.charAt(x) + shift);
     	            OutputList.add(letter.charAt(x));
             		InputList.remove(0);
             		x++;
-            // If the ASCII value does not match any letters, then it will check to 
-            // see if it matches the value of a specific symbol
+            /*
+			* If the ASCII value does not match any letters, then it will check to 
+            * see if it matches the value of a specific symbol
+			*/
     		} else {
     			switch (value) {
         		
@@ -209,14 +217,14 @@ public class CipherMachine {
         			break;
         		}
         		
-        		// If we reach here, then ASCII value did not match any of the specified symbol
+        		/* If we reach here, then ASCII value did not match any of the specified symbol */
         		default: {
         			ascii = (int) character;
-        			// It first checks to see if the ASCII value matches that of a white space
+        			/* It first checks to see if the ASCII value matches that of a white space */
         			if (ascii == whitespace) {
-        				// If true then keep ASCII value as white space
+        				/* If true then keep ASCII value as white space */
         			} else {
-        			// Else it will assign the ASCII value the same as an underscore
+        			/* Else it will assign the ASCII value the same as an underscore */
         				ascii = underscore;
         			}
         			output = (char) ascii;
@@ -226,13 +234,17 @@ public class CipherMachine {
     		}
     	}
     }
-    	// Once we reach down here, the program makes a new String and assigns it the OutputList
-    	// as a string but all symbols made by the list itself are removed.
+    	/*
+		* Once we reach down here, the program makes a new String and assigns it the OutputList
+    	* as a string but all symbols made by the list itself are removed
+		*/
     	String FormattedOutput = OutputList.toString().replaceAll("\\[|\\]|[,][ ]", "");    	
     	return FormattedOutput;
     }
-    // This method decodes an incoming string by a shift value.
-    // returns decoded string.
+    /*
+	* This method decodes an incoming string by a shift value.
+    * returns decoded string
+	*/
     public String ElonDecoder(String input, int shift) {
     	ArrayList<Character>OutputList = new ArrayList<>();
     	char[] charArray = input.toCharArray();
@@ -244,7 +256,7 @@ public class CipherMachine {
     	int x = 0;
     	int y = 0;
     	
-    	/// ASCII Values ///
+    	/* ASCII Values */
     	final int A = 65;
     	final int Z = 90;
     	final int a = 97;
@@ -270,7 +282,7 @@ public class CipherMachine {
     		
     		if (value >= A && value <= Z) {
     	            char c = (char)(input.charAt(y) - shift);
-    	            // Checks the char 'c' to see if the new value is lower than the ASCII value of A (65)
+    	            /* Checks the char 'c' to see if the new value is lower than the ASCII value of A (65) */
     	            if (c < 'A')
     	            	letter += (char)(input.charAt(y) + (26-shift));
     	            else
@@ -333,7 +345,7 @@ public class CipherMachine {
         			break;
         		}
         		default: {
-            		// If we reach here, then ASCII value did not match any of the specified symbol
+            		/* If we reach here, then ASCII value did not match any of the specified symbol */
         			int ascii = (int) character;
         			if (ascii == whitespace) {
             			char output = (char) ascii;
