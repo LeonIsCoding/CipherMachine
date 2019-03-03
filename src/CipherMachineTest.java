@@ -34,6 +34,7 @@ public class CipherMachineTest {
 
         assertEquals("a", cm.ElonEncoder("x", 3));
     }
+    /* This test checks that the method works with overhanging capital letters */
     @Test
     public void TestCipherMachineCapitalOverhangingMethod() {
         CipherMachine cm = new CipherMachine();
